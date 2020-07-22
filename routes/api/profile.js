@@ -49,11 +49,11 @@ router.post(
       status,
       githubusername,
       skills,
-      youtube,
       twitter,
       facebook,
-      instagram,
+      youtube,
       linkedin,
+      instagram,
     } = req.body;
 
     //Build profile object
@@ -71,10 +71,10 @@ router.post(
 
     //Build social array
     profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
     if (twitter) profileFields.social.twitter = twitter;
     if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.ylinkedin = linkedin;
+    if (youtube) profileFields.social.youtube = youtube;
+    if (linkedin) profileFields.social.linkedin = linkedin;
     if (instagram) profileFields.social.instagram = instagram;
 
     try {
