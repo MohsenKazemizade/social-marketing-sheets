@@ -2,8 +2,11 @@ const express = require('express');
 const auth = require('../../middleware/auth');
 const router = express.Router();
 const { body, validationResult } = require('express-validator');
+
 const Profile = require('../../models/Profile');
 const User = require('../../models/User');
+const Post = require('../../models/Post');
+
 // @rout     Get api/profile/me
 // @desc     Get current users profile
 // @access   Private
@@ -142,7 +145,7 @@ router.get('/user/:user_id', async (req, res) => {
 router.delete('/', auth, async (req, res) => {
   try {
     // remove user posts
-
+    await Post.deleteMany({ user: req.user.id });
     //remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
     //remove user
